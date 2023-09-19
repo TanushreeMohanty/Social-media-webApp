@@ -1,0 +1,44 @@
+.webcam-capture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border: 1px solid black;
+    background-color: wheat;
+    color: black;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    /* Ensure the video container takes the full width */
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio for responsive video */
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: red;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+    border: 1px solid black;
+    background-color: blue;
+    /* Flip the video for selfie mode */
+}
+
+.output_canvas {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(-1);
+    width: 100%;
+    height: 100%; /* Use the same dimensions as the video container */
+    border: 1px solid black;
+}
