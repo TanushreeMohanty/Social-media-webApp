@@ -8,7 +8,7 @@ const FaceMeshComponent = () => {
   const canvasRef = useRef(null);
   var camera = null;
   var faceMesh = null;
-  const [selectedFilter, setSelectedFilter] = useState("No Filter");
+  const [selectedFilter, setSelectedFilter] = useState("demo");
 
   useEffect(() => {
     // Function to initialize and start the webcam feed
@@ -41,10 +41,10 @@ const FaceMeshComponent = () => {
 
           faceMesh.setOptions({
             maxNumFaces: 2,
-            minDetectionConfidence: 0.1,
+            minDetectionConfidence: 0.9,
             minTrackingConfidence: 0.8,
             modelComplexity: 0, // Using the Lite model for better performance
-            numThreads: 1, 
+            numThreads: 1,
           });
 
           faceMesh.onResults(onFaceMeshResults);
@@ -74,7 +74,7 @@ const FaceMeshComponent = () => {
         faceMesh.close();
       }
     };
-  }, [selectedFilter]); //adding selectedFilter as a dependency, ensure that the filter changes dynamically when different option selected. 
+  }, [selectedFilter]); //adding selectedFilter as a dependency, ensure that the filter changes dynamically when different option selected.
 
   const onFaceMeshResults = (results) => {
     if (canvasRef.current) {
@@ -155,8 +155,8 @@ const FaceMeshComponent = () => {
         lineWidth: 1,
       });
     }
-    if(selectedFilter === "demo"){
-        drawSunglasses(canvasCtx, faceLandmarks);
+    if (selectedFilter === "demo") {
+      drawSunglasses(canvasCtx, faceLandmarks);
     }
   };
 
@@ -187,31 +187,103 @@ const FaceMeshComponent = () => {
       }
     }
   };
+
+  //   //debuging_drawSunglasses
+  // const drawSunglasses = (canvasCtx, faceLandmarks) => {
+  //   if (!canvasRef || !canvasCtx) {
+  //     return;
+  //   }
+
+  //   console.log("Face Landmarks:", faceLandmarks);
+
+  //   // Check the structure of the faceLandmarks object
+  //   console.log("faceLandmarks structure:", Object.keys(faceLandmarks));
+
+  //   // Check specific landmarks by numerical indices
+  //   console.log("Right Eye Landmarks:", faceLandmarks[0]); // Replace 0 with the correct index
+  //   console.log("Left Eye Landmarks:", faceLandmarks[1]); // Replace 1 with the correct index
+
+  //   // Store the landmarks if they are accessible
+  //   const rightEye = faceLandmarks[0]; // Replace 0 with the correct index
+  //   const leftEye = faceLandmarks[1]; // Replace 1 with the correct index
+
+  //   console.log(rightEye, leftEye);
+
+  //   const sunglasses = new Image();
+  //   sunglasses.src = "./src/assets/sunglass.png";
+
+  //   sunglasses.onload = () => {
+  //     console.log("Sunglasses image loaded successfully!");
+
+  //     const x = (faceLandmarks[0].x + faceLandmarks[1].x) / 2;
+  //     const y = (faceLandmarks[0].y + faceLandmarks[1].y) / 2;
+  //     const width = faceLandmarks[1].x - faceLandmarks[0].x;
+  //     const height = (sunglasses.height / sunglasses.width) * width;
+
+  //     console.log("Sunglasses Position (x, y):", x, y);
+  //     console.log("Sunglasses Dimensions (width, height):", width, height);
+
+  //     if (sunglasses.loaded) {
+  //       // Draw the sunglasses image on the canvas
+  //       canvasCtx.drawImage(sunglasses, x, y, width, height);
+
+  //       // Log a message to the console indicating that the image is being displayed
+  //       console.log("Sunglasses image is being displayed on the screen.");
+  //     } else {
+  //       // Log a message to the console indicating that the image is not being displayed
+  //       console.log("Sunglasses image is not being displayed on the screen.");
+  //     }
+  //   };
+
+  //   // Log if there's an error loading the image
+  //   sunglasses.onerror = (error) => {
+  //     console.error("Error loading sunglasses image:", error);
+  //   };
+  // };
   
   const drawSunglasses = (canvasCtx, faceLandmarks) => {
-      // Loading the sunglass image
-      const sunglasses = new Image();
-      sunglasses.src = "./assets/sunglass.png"; 
+    if (!canvasRef || !canvasCtx) {
+      return;
+    }
   
-      // Waiting for the image to load before drawing it
-      sunglasses.onload = () => {
-        // Calculating the position for the sunglasses based on the landmarks
-        const rightEye = faceLandmarks[Facemesh.FACEMESH_RIGHT_EYE];
-        const leftEye = faceLandmarks[Facemesh.FACEMESH_LEFT_EYE];
+    // Store the landmarks if they are accessible
+    const rightEye = faceLandmarks[0]; // Right eye index
+    const leftEye = faceLandmarks[1]; // Left eye index
   
-        if (rightEye && leftEye) {
-          const x = (leftEye[0].x + rightEye[3].x) / 2; // X position between eyes
-          const y = (leftEye[0].y + leftEye[3].y) / 2; // Y position between eyes
+    const sunglasses = new Image();
+    sunglasses.src = "./src/assets/sunglass.png";
   
-          // Calculate the width and height of the sunglasses based on eye distance
-          const width = rightEye[3].x - leftEye[0].x;
-          const height = sunglasses.height * (width / sunglasses.width);
+    sunglasses.onload = () => {
+      console.log("Sunglasses image loaded successfully!");
+    
+      if (rightEye && leftEye) {
+        // Calculate the position and size of the sunglasses
+        const x = leftEye.x + (rightEye.x - leftEye.x) / 2; // Calculate x based on the center of the eyes
+        const y = (leftEye.y + rightEye.y) / 2; // Calculate y based on the average of vertical positions
+        const width = rightEye.x - leftEye.x;
+        const height = (sunglasses.height / sunglasses.width) * width;
+    
+        console.log("Sunglasses Position (x, y):", x, y);
+        console.log("Sunglasses Dimensions (width, height):", width, height);
+    
+        // Draw the sunglasses image on the canvas
+        canvasCtx.drawImage(sunglasses, width, height);
+    
+        // Log a message to the console indicating that the image is being displayed
+        console.log("Sunglasses image is being displayed on the screen.");
+      } else {
+        // Log a message to the console indicating that the landmarks are not found
+        console.error("Right eye and/or left eye landmarks not found.");
+      }
+    };
+    
   
-          // Draw the sunglasses
-          canvasCtx.drawImage(sunglasses, x - width / 2, y - height / 2, width, height);
-        }
-      };
+    // Log if there's an error loading the image
+    sunglasses.onerror = (error) => {
+      console.error("Error loading sunglasses image:", error);
+    };
   };
+  
 
   return (
     <div className="face-mesh-container">
@@ -226,7 +298,6 @@ const FaceMeshComponent = () => {
           <option value="No Filter">No Filter</option>
           <option value="Basic Filter">Basic Filter</option>
           <option value="demo">demo</option>
-
         </select>
       </div>
       <div className="video-container">
