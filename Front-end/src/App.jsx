@@ -1,12 +1,12 @@
 
 import './App.css'
-import FaceMeshLandmarks from './face'
+import Camera from './Camera'
 
 function App() {
 
   return (
     <>
-     <FaceMeshLandmarks />
+     <Camera />
     </>
   )
 }

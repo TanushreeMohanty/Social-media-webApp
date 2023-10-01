@@ -2,13 +2,15 @@ import { useRef, useEffect, useState } from "react";
 import * as Facemesh from "@mediapipe/face_mesh";
 import * as cam from "@mediapipe/camera_utils";
 import "./face.css";
+import Gallery from "./gallery";
 
 const FaceMeshComponent = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   var camera = null;
   var faceMesh = null;
-  const [selectedFilter, setSelectedFilter] = useState("demo");
+  const [selectedFilter, setSelectedFilter] = useState("Basic Filter");
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   useEffect(() => {
     // Function to initialize and start the webcam feed
@@ -240,35 +242,35 @@ const FaceMeshComponent = () => {
   //     console.error("Error loading sunglasses image:", error);
   //   };
   // };
-  
+
   const drawSunglasses = (canvasCtx, faceLandmarks) => {
     if (!canvasRef || !canvasCtx) {
       return;
     }
-  
+
     // Store the landmarks if they are accessible
     const rightEye = faceLandmarks[0]; // Right eye index
     const leftEye = faceLandmarks[1]; // Left eye index
-  
+
     const sunglasses = new Image();
     sunglasses.src = "./src/assets/sunglass.png";
-  
+
     sunglasses.onload = () => {
       console.log("Sunglasses image loaded successfully!");
-    
+
       if (rightEye && leftEye) {
         // Calculate the position and size of the sunglasses
         const x = leftEye.x + (rightEye.x - leftEye.x) / 2; // Calculate x based on the center of the eyes
         const y = (leftEye.y + rightEye.y) / 2; // Calculate y based on the average of vertical positions
         const width = rightEye.x - leftEye.x;
         const height = (sunglasses.height / sunglasses.width) * width;
-    
+
         console.log("Sunglasses Position (x, y):", x, y);
         console.log("Sunglasses Dimensions (width, height):", width, height);
-    
+
         // Draw the sunglasses image on the canvas
         canvasCtx.drawImage(sunglasses, width, height);
-    
+
         // Log a message to the console indicating that the image is being displayed
         console.log("Sunglasses image is being displayed on the screen.");
       } else {
@@ -276,33 +278,113 @@ const FaceMeshComponent = () => {
         console.error("Right eye and/or left eye landmarks not found.");
       }
     };
-    
-  
+
     // Log if there's an error loading the image
     sunglasses.onerror = (error) => {
       console.error("Error loading sunglasses image:", error);
     };
   };
-  
 
+  const onCaptureClick = () => {
+    openGallery();
+
+    if (!videoRef.current || !canvasRef.current) {
+      return;
+    }
+
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+
+    // Create a canvas element to capture the image
+    const captureCanvas = document.createElement("canvas");
+    const captureCanvasCtx = captureCanvas.getContext("2d");
+
+    if (!captureCanvasCtx) {
+      return;
+    }
+
+    const videoWidth = video.videoWidth;
+    const videoHeight = video.videoHeight;
+
+    if (!videoWidth || !videoHeight) {
+      return;
+    }
+
+    // Set the canvas size to match the video frame size
+    captureCanvas.width = videoWidth;
+    captureCanvas.height = videoHeight;
+
+    // Draw the current frame from the video element onto the capture canvas
+    captureCanvasCtx.drawImage(video, 0, 0, videoWidth, videoHeight);
+
+    // Draw the filter canvas on top of the video frame
+    captureCanvasCtx.drawImage(canvas, 0, 0, videoWidth, videoHeight);
+
+    // Save the captured image data from the capture canvas to localStorage
+    const imageDataURL = captureCanvas.toDataURL("image/png");
+
+    // Retrieve the existing image URLs from localStorage or initialize an empty array
+    const existingImageUrls =
+      JSON.parse(localStorage.getItem("capturedImages")) || [];
+
+    if (existingImageUrls.length >= 10) {
+      // Display a message when the image limit is exceeded
+      alert("Image capture limit reached (10 images).");
+      return;
+    }
+
+    // Add the new image URL to the array
+    existingImageUrls.push(imageDataURL);
+
+    // Store the updated array in localStorage
+    localStorage.setItem("capturedImages", JSON.stringify(existingImageUrls));
+
+    // Log a message to indicate that the image has been captured
+    console.log("Image captured and saved to localStorage.");
+  };
+
+  const openGallery = () => {
+    setIsGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false);
+  };
   return (
     <div className="face-mesh-container">
-      <h1>Anime AR Feat.</h1>
-
-      <div className="filter-selection">
-        <label>Select a Filter: </label>
-        <select
-          value={selectedFilter}
-          onChange={(e) => setSelectedFilter(e.target.value)}
-        >
-          <option value="No Filter">No Filter</option>
-          <option value="Basic Filter">Basic Filter</option>
-          <option value="demo">demo</option>
-        </select>
-      </div>
-      <div className="video-container">
+      <div
+        className="video-container"
+        style={{ display: isGalleryOpen ? "none" : "block" }}
+      >
         <video ref={videoRef} autoPlay playsInline />
+        <div className="filter-selection">
+          <label>Select a Filter: </label>
+          <select
+            value={selectedFilter}
+            onChange={(e) => setSelectedFilter(e.target.value)}
+          >
+            <option value="No Filter">No Filter</option>
+            <option value="Basic Filter">Basic Filter</option>
+            <option value="demo">demo</option>
+          </select>
+        </div>
         <canvas ref={canvasRef} className="output-canvas" />
+      </div>
+      {isGalleryOpen && (
+        <div className="gallery-modal">
+          <div className="gallery-content">
+            <span className="close-button" onClick={closeGallery}>
+              &times;
+            </span>
+            <Gallery />
+          </div>
+        </div>
+      )}
+      <div className="capture-screen">
+        {!isGalleryOpen && (<button onClick={onCaptureClick}>Capture</button>)}
+        <button onClick={isGalleryOpen ? closeGallery : openGallery}>
+          {isGalleryOpen ? "Close Gallery" : "Open Gallery"}
+        </button>
       </div>
     </div>
   );
