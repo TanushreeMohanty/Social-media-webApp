@@ -1,0 +1,37 @@
+.post-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.post-time {
+    color: #777;
+}
+
+.post-text {
+    margin-bottom: 16px;
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+}

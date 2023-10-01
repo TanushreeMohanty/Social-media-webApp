@@ -1,0 +1,27 @@
+.tabs-container {
+  display: flex;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  width: 20vw; 
+  height: 100vh;
+}
+
+.tabs a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.tabs a:hover {
+  background-color: lightgray;
+}
+
+.output-container {
+  flex-grow: 1;
+  padding: 20px; 
+}

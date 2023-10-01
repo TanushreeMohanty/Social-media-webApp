@@ -1,0 +1,8 @@
+.component-content{
+    height: 90vh;
+    width: 80vw;
+    color:black;
+    background-color: white;
+    border-radius: 1%;
+    overflow-y: scroll;
+} 

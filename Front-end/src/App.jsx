@@ -1,14 +1,14 @@
-
-import './App.css'
-import Camera from './Camera'
-
-function App() {
+import "./App.css";
+import Navigation from "./Navigation";
+ 
+function App() { 
 
   return (
-    <>
-     <Camera />
+    <>  
+        <Navigation />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+    
