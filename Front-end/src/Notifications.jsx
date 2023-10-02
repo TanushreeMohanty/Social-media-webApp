@@ -1,9 +1,23 @@
-import InProgress from "./InProgress"
+import './Notification.css';
+import notificationData from './notificationData';
 
 function Notifications() {
   return (
-    <div>Notifications  <InProgress /> </div>
-  )
+    <div className="notifications">
+      <h1>Notifications</h1>
+      <ul className="notification-list">
+        {notificationData.map((notification) => (
+          <li key={notification.id} className="notification-item">
+            <img
+              src={notification.icon}
+              className="notification-icon"
+            />
+            <p className="notification-message">{notification.message}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default Notifications  
+export default Notifications;
