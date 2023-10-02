@@ -57,45 +57,17 @@ export const data = [
         "comments": "63"
     }
 ]
-export const data1 = [
-    {
-        "id": 1,
-        "img": dummyIMG,
-        "likes": "248",
-        "comments": "76"
-    },
-    {
-        "id": 2,
-        "img": dummyIMG,
-        "likes": "312",
-        "comments": "98"
-    },
-    {
-        "id": 3,
-        "img": dummyIMG,
-        "likes": "165",
-        "comments": "42"
-    },
-    {
-        "id": 4,
-        "img": dummyIMG,
-        "likes": "502",
-        "comments": "124"
-    },
 
-]
-export const data3 = [
-    {
-        "id": 1,
-        "img": dummyIMG,
-        "likes": "248",
-        "comments": "76"
-    },
-    {
-        "id": 2,
-        "img": dummyIMG,
-        "likes": "312",
-        "comments": "98"
-    },
+// dummyUserData.js
 
-]
+const dummyUserData = [
+    {
+      id: 1,
+      name: 'Aryan Bhatt',
+      bio: '🍃 Embracing the journey, one step at a time. 🍃',
+      profileImg: 'https://wallpapers-clan.com/wp-content/uploads/2023/01/naruto-gif-pfp-1.gif',
+      // Add other user information as needed
+    }
+  ];
+  
+  export default dummyUserData;
