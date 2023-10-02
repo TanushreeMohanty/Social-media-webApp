@@ -30,10 +30,6 @@ function Tabs() {
     setSelectedTab("Notifications");
   }
 
-  function handlePostClick() {
-    setSelectedTab("PostList");
-  }
-
   function handleChatClick() {
     setSelectedTab("Chat");
   }
@@ -50,7 +46,6 @@ function Tabs() {
             <a onClick={handleSearchClick}>Search</a>
             <a onClick={handleNotificationsClick}>Notifications</a>
             <a onClick={handleChatClick}>Chats</a>
-            <a onClick={handlePostClick}>Post</a>
           </div>
           <div className="output-container">
             <Output />
