@@ -7,8 +7,8 @@ function App() {
     <>  
         <Navigation />
     </>
-  );
+  ); 
 }
 
 export default App;
-    
+  

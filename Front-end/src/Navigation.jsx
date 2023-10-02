@@ -1,9 +1,9 @@
 import Tabs from "./Tabs";
 import './Navigation.css'
-function Navigation() {
+function Navigation() { 
   return (
     <div className="navbar">
-      <Tabs /> 
+      <Tabs />
     </div>
   );
 } 

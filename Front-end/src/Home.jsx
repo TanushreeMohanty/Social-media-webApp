@@ -1,9 +1,30 @@
-import InProgress from "./InProgress"
+import './Home.css';
+import users from './storiseData'; 
+import PostList from './PostList'
 
-function Home() {
+const UserProfileSection = () => {
   return (
-    <div>Home  <InProgress/> </div>
-  )
-}
+    <div className="user-profile-section">
+      <div className="stories-section">
+        <div className="stories-container">
+          {users.map((user, index) => (
+            <div key={index} className="user-profile-card">
+              <img
+                src={user.profileImg}
+                alt={`User ${index + 1}`}
+                className="profile-image"
+              />
+              <p>{user.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
-export default Home 
+      <div className="random-posts-section">
+        <PostList />
+      </div>
+    </div>
+  );
+};
+
+export default UserProfileSection;
