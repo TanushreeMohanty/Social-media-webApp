@@ -1,0 +1,29 @@
+.dummy-gallery {
+    text-align: center;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    justify-items: center; /* Center items horizontally */
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden; /* Ensure images don't overflow their containers */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /* Add a smooth hover effect */
+  }
+  
+  .gallery-item:hover {
+    transform: scale(1.05); /* Enlarge the image slightly on hover */
+  }
+  
+  .gallery-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  

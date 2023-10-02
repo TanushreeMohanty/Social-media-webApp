@@ -1,16 +1,19 @@
 import { useState } from 'react';
+import './Search.css'; 
+import DummyGallery from './dummyGallery';
 
 function Search() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    // Implement your search logic here using the searchQuery state.
+    
     console.log('Searching for:', searchQuery);
   };
 
   return (
-    <div>
-      <div>
+    <div className="search-container">
+      {/* Search-Section */}
+      <div className="search-section">
         <input
           type="text"
           placeholder="Search here..."
@@ -18,6 +21,11 @@ function Search() {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
+      </div>
+
+      {/* Gallery-Section */}
+      <div className="gallery-section">
+          <DummyGallery />
       </div>
     </div>
   );
