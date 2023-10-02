@@ -1,8 +1,9 @@
+import InProgress from "./InProgress"
 
 function Chat() {
   return (
-    <div>Chat</div>
+    <div>Chat  <InProgress /> </div>
   )
 }
 
-export default Chat
+export default Chat 

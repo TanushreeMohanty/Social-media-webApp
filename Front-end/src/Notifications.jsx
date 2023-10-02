@@ -1,8 +1,9 @@
+import InProgress from "./InProgress"
 
 function Notifications() {
   return (
-    <div>Notifications</div>
+    <div>Notifications  <InProgress /> </div>
   )
 }
 
-export default Notifications 
+export default Notifications  

@@ -1,7 +1,8 @@
+import InProgress from "./InProgress"
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>Home  <InProgress/> </div>
   )
 }
 
