@@ -5,9 +5,51 @@
 .tabs {
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
-  width: 20vw; 
+  background-image: url("../assets/navbarbg.png");
+  background-size: cover;
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center-align the background image */
+  width: 20vw;
   height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
+}
+
+/* Style your tabs or navigation items as needed */
+.tabs-item {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #FFF;
+  text-align: center;
+  cursor: pointer; /* Change cursor to pointer for interaction */
+  transition: background-color 0.3s ease-in-out; /* Add a smooth background color transition */
+}
+
+
+
+.logo-name {
+  color: #EA0024;
+  text-align: center;
+  font-family: 'Langar', cursive;
+  font-size: 24px; /* Larger font size for impact */
+  letter-spacing: 2px; /* Increased letter spacing for emphasis */
+  text-transform: uppercase; /* Uppercase text for a stylish look */
+  margin: 0; /* Remove any default margin */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+  animation: pulse 2s infinite; /* Add a pulsating animation */
+  padding: 10px;
+}
+
+/* Define a pulsating animation */
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
 }
 
 .tabs a {
@@ -15,6 +57,9 @@
   padding: 10px;
   text-decoration: none;
   color: black;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
 }
 
 .tabs a:hover {
@@ -25,3 +70,4 @@
   flex-grow: 1;
   padding: 20px; 
 }
+

@@ -1,8 +1,28 @@
-.component-content{
+.component-content {
     height: 93vh;
     width: 80vw;
-    color:black;
-    background-color: white;
+    color: black;
     border-radius: 1%;
     overflow-y: scroll;
-} 
+}
+
+/* Hide the scrollbar */
+.component-content::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+/* Style the scrollbar track (the background) */
+.component-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+.component-content::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+/* Optionally, you can add hover styles for the scrollbar thumb if needed */
+.component-content::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc;
+}

@@ -1,49 +1,64 @@
 /* settings.css */
 
 .settings {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .section {
-    margin-top: 20px;
-  }
-  
-  h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .option p {
-    font-size: 16px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1); /* Black background with transparency */
+  backdrop-filter: blur(10px); /* Apply a blur effect to the background */
+  color: white; /* Set text color to white for contrast */
+  border-radius: 8px; /* Add some border radius for a rounded look */
+}
+
+h1 {
+font-size: 10px; /* Increase font size for the main heading */
+margin-bottom: 20px;
+color: #ffffff; /* Darken the text color for better contrast */
+}
+
+.section {
+margin-top: 30px; /* Add more space between sections */
+}
+
+h2 {
+font-size: 24px; /* Increase font size for section headings */
+margin-bottom: 15px; /* Add more spacing below section headings */
+color: #fbadff; /* Use a vibrant color for section headings */
+}
+
+.option {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 0; /* Increase padding for better spacing */
+border-bottom: 1px solid #ddd;
+transition: background-color 0.3s ease-in-out; /* Add a smooth hover effect */
+}
+
+.option:hover {
+background-color: rgb(71, 71, 71,0.3); /* Light gray background on hover */
+}
+
+.option p {
+font-size: 18px; /* Slightly larger font size for options */
+color: #ffffff; /* Dark gray text color for options */
+margin: 0;
+}
+.option input{
+background-color: #000000;
+color: #fefefe;
+}
+button {
+background-color: #007bff;
+color: #fff;
+border: none;
+padding: 12px 24px; /* Increase padding for better button appearance */
+font-size: 20px; /* Larger font size for buttons */
+cursor: pointer;
+margin-top: 30px; /* Increase top margin for separation */
+border-radius: 4px; /* Add a slight border radius */
+transition: background-color 0.3s ease-in-out; /* Add a smooth hover effect */
+}
+
+button:hover {
+background-color: #0056b3; /* Darken the button color on hover */
+}

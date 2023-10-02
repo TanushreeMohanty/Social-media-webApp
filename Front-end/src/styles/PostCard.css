@@ -1,11 +1,19 @@
+/* Improve styling of .post-card */
 .post-card {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     padding: 16px;
     margin: 16px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
+.post-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Improve styling of .user-info */
 .user-info {
     display: flex;
     align-items: center;
@@ -17,21 +25,28 @@
     height: 40px;
     border-radius: 50%;
     margin-right: 12px;
+    object-fit: cover;
 }
 
 .user-name {
     font-weight: bold;
+    color: #333; /* Change text color to a darker shade */
 }
 
 .post-time {
     color: #777;
+    font-size: 0.9em; /* Slightly smaller font size */
 }
 
+/* Improve styling of .post-text */
 .post-text {
     margin-bottom: 16px;
+    line-height: 1.4; /* Improve readability with increased line-height */
 }
 
+/* Improve styling of .post-image */
 .post-image {
     max-width: 100%;
     height: auto;
+    border-radius: 8px; /* Add border radius to images */
 }

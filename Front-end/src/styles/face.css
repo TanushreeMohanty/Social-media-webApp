@@ -1,7 +1,13 @@
 .face-mesh-container {
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the container takes up the full height of its parent */
 }
+
 
 /* Container for the video and filter selection */
 .video-container {
@@ -32,21 +38,62 @@ video {
 
 /* Style the filter selection */
 .filter-selection {
-  position: absolute;
+  position: absolute; /* Change to fixed position for a sticky effect */
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px; /* Add padding for better visibility */
+  padding: 15px; /* Increase padding for better visibility */
   box-sizing: border-box; /* Include padding in width calculations */
-  z-index: 1;
+  z-index: 1000; /* Increase z-index to ensure it's above other content */
+  background-color: rgba(0, 0, 0, 0.8); /* Add a semi-transparent black background */
+  color: #fff; /* Set text color to white */
+  font-size: 18px; /* Adjust font size */
+  text-align: center; /* Center the text */
+  letter-spacing: 1px; /* Add some letter spacing for aesthetics */
+  border-bottom: 2px solid #ffcc00; /* Add a bright yellow border at the bottom */
+  transition: background-color 0.3s ease; /* Add a smooth transition effect for background color */
 }
 
-.gallery-modal{
+/* Add a hover effect for the filter selection */
+.filter-selection:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darken the background slightly on hover */
+}
+
+
+/* .gallery-modal{
   border: 1px solid black;
   
-}
+} */
 
 button:hover{
   background-color: rgb(4, 4, 63);
   color: aliceblue;
+}
+
+.capture-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  }
+
+.capture-screen button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.capture-screen button:hover {
+  background-color: #0077ff; /* Background color on hover */
+  color: #fff; /* Text color on hover */
+}
+
+.capture-screen button:disabled {
+  background-color: #ccc; /* Background color for disabled button */
+  color: #888; /* Text color for disabled button */
+  cursor: not-allowed;
 }

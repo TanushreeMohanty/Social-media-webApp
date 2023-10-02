@@ -1,47 +1,49 @@
-.main-container {
-  display: flex; 
-  justify-content: space-between; 
-}
-
-.left-side-section {
-  flex: 60%; 
-  
-}
-
-.right-side-section {
-  flex: 40%; 
-  border:1px solid black;
-  height: 100vh;
-  overflow-y: scroll;
-  margin-top: .1%;
-}
-
 .stories-section {
-    margin-bottom: 20px;
-  }
-  
-  .stories-container {
-    display: flex;
-    overflow-x: scroll;
-    gap: 20px; 
-    padding: 10px;  
-  }
-  
-  .user-profile-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-size: 14px;
-    color: #333; 
-  }
-  
-  .profile-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ff8c00; 
-  }
-  
-  
+  margin-bottom: 20px;
+}
+
+.stories-container {
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px; 
+  padding: 10px; 
+}
+
+/* Hide the scrollbar */
+.stories-container::-webkit-scrollbar {
+width: 0.5em;
+}
+
+/* Style the scrollbar track (the background) */
+.stories-container::-webkit-scrollbar-track {
+background: transparent;
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+.stories-container::-webkit-scrollbar-thumb {
+background-color: transparent;
+border-radius: 4px;
+}
+
+/* Optionally, you can add hover styles for the scrollbar thumb if needed */
+.stories-container::-webkit-scrollbar-thumb:hover {
+background-color: #ccc;
+}
+
+.user-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  color: #333; 
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff8c00; 
+}
+
