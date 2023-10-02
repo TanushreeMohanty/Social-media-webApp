@@ -1,6 +1,7 @@
 // Chat.js
-import chatsData from './chatsData';
-import './Chat.css'
+import chatsData from '../dummyData/chatsData';
+import '../styles/Chat.css'
+
 const Chat = () => {
   return (
     <div className="chat">

@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import * as Facemesh from "@mediapipe/face_mesh";
 import * as cam from "@mediapipe/camera_utils";
-import "./face.css";
+
+import "../styles/face.css";
 import Gallery from "./gallery";
 
 const FaceMeshComponent = () => {

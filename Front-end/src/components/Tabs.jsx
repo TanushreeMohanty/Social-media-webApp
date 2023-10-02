@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./Tabs.css";
-import Context from "./Context";
+import "../styles/Tabs.css";
+import Context from "../dummyData/Context";
 import Output from "./Output";
 
 function Tabs() {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./gallery.css";
+import "../styles/gallery.css";
 import { FiTrash, FiDownload } from "react-icons/fi";
 
 function Gallery() {

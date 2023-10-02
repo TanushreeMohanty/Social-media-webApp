@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Search.css'; 
+import '../styles/Search.css'; 
 import DummyGallery from './dummyGallery';
 
 function Search() {

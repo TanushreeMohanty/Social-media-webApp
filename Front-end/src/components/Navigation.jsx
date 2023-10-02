@@ -1,5 +1,6 @@
 import Tabs from "./Tabs";
-import './Navigation.css'
+import '../styles/Navigation.css'
+
 function Navigation() { 
   return (
     <div className="navbar">

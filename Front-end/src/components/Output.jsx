@@ -1,3 +1,5 @@
+import React, { useMemo } from "react";
+
 import Camera from "./Camera";
 import Home from "./Home";
 import UserProfile from "./UserProfile";
@@ -7,10 +9,9 @@ import Notifications from "./Notifications";
 import PostList from "./PostList";
 import Chat from "./Chat";
 
-import './output.css'
+import '../styles/output.css'
 
-import React, { useMemo } from "react";
-import Context from "./Context"; 
+import Context from "../dummyData/Context"; 
 
 function Output() {
 

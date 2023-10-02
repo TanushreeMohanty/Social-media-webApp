@@ -1,6 +1,6 @@
-import { data } from './userPost';
-import dummyUserData from './userPost';
-import './UserProfile.css';
+import { data } from '../dummyData/userPost';
+import dummyUserData from '../dummyData/userPost';
+import '../styles/UserProfile.css';
 
 const UserProfile = () => {
   return (

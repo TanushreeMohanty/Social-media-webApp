@@ -1,5 +1,5 @@
-import './Notification.css';
-import notificationData from './notificationData';
+import '../styles/Notification.css';
+import notificationData from '../dummyData/notificationData';
 
 function Notifications() {
   return (

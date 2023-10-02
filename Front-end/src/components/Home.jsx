@@ -1,5 +1,5 @@
-import './Home.css';
-import users from './storiseData'; 
+import '../styles/Home.css';
+import users from '../dummyData/storiseData'; 
 import PostList from './PostList'
 
 const UserProfileSection = () => {

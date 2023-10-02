@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './PostCard.css'; 
+import '../styles/PostCard.css'; 
 
 const PostCard = ({ name, text, img, avtar, time }) => {
     return (

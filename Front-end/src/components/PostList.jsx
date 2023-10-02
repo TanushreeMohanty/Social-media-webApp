@@ -1,6 +1,6 @@
 import PostCard from './PostCard';
-import { postData } from './postData';
-import './PostList.css'; 
+import { postData } from '../dummyData/postData';
+import '../styles/PostList.css'; 
 
 const PostList = () => {
     return (

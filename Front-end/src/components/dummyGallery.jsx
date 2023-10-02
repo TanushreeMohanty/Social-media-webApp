@@ -1,5 +1,5 @@
-import './dummyGallery.css'; 
-import dummyPics from './dummyPics';
+import '../styles/dummyGallery.css'; 
+import dummyPics from '../dummyData/dummyPics';
 
 function DummyGallery() {
   return (
